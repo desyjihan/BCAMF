@@ -1,5 +1,8 @@
 package BCAMF.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +14,7 @@ import BCAMF.drivers.DriverSingleton;
 
 public class Home {
 
-	private WebDriver driver;
+	private static WebDriver driver;
 	
 	public Home() {
 		this.driver = DriverSingleton.getDriver();
@@ -125,10 +128,16 @@ public class Home {
 	
 	public void clickCompany1() {
 		Company1.click();
+//		scroll(300);
+		delay(3);
+		driver.findElement(By.cssSelector("img[src='https://i2.wp.com/globalsqa.com//wp-content/uploads/2013/12/logo-3.png?w=940']']")).sendKeys(Keys.CONTROL +"w");
 	}
 	
 	public void clickCompany2() {
 		Company2.click();
+//		scroll(300);
+//		delay(3);
+//		driver.findElement(By.cssSelector("img[src='https://i2.wp.com/globalsqa.com//wp-content/uploads/2013/12/basck-logo.png?w=940']")).sendKeys(Keys.CONTROL +"w");
 	}
 	
 //	public void clickCompany3() {
@@ -211,7 +220,18 @@ public class Home {
 //		Training9.click();
 //	}
 	
+	static void delay(int detik) {
+		try {
+			Thread.sleep(1000*detik);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	
+	static void scroll(int vertikal) {
+		JavascriptExecutor js =(JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,"+vertikal+")");
+	}
 	
 }

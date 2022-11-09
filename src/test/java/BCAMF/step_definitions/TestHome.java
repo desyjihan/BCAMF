@@ -1,5 +1,7 @@
 package BCAMF.step_definitions;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
@@ -12,12 +14,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-
 public class TestHome {
 
 	public static WebDriver driver;
 	private static ExtentTest extentTest;
 	private Home home = new Home();
+	ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
 	
 	public TestHome() {
 		driver = Hooks.driver;
@@ -52,15 +54,14 @@ public class TestHome {
 		scroll(250);
 		delay(3);
 		home.clickCompany1();
-		delay(3);
-		scroll(350);
+		driver.switchTo().window(tabs2.get(1));
+		driver.close();
+	    driver.switchTo().window(tabs2.get(0));
 		extentTest.log(LogStatus.PASS, "Click company 1");
 	}
 	
 	@And("Click company 2")
-	public void click_company_2() {
-		
-//		delay(3);
+	public void click_company_2() {	
 		home.clickCompany2();
 		delay(3);
 		extentTest.log(LogStatus.PASS, "Click company 2");
