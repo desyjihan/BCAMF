@@ -323,10 +323,11 @@ public class TestHome {
 	    extentTest.log(LogStatus.PASS, "Click enroll now fast track 1");
 	}
 	
-	@And("Close Ads2")
-	public void close_ads2() {
+	@And("Close Ads")
+	public void close_ads() {
 		delay(2);
-		home.closeAds2();
+		home.closeAds();
+		delay(3);
 	}
 	
 	@When("Click training 2")
@@ -871,12 +872,14 @@ public class TestHome {
 		delay(3);
 		home.Achieve();
 		delay(3);
+		scroll(400);
 		extentTest.log(LogStatus.PASS, "Show achieve");
 	}
 	
 	@And("Lates news")
 	public void lates_news() {
-		scroll(400);
+		delay(3);
+		home.News();
 		delay(3);
 		home.clickNextSlideNews();
 		delay(3);
@@ -893,7 +896,10 @@ public class TestHome {
 		delay(2);
 		scroll(700);
 		delay(3);
-		home.Achieve();
+		home.clickNextSlideTestimonial();
+		delay(3);
+		home.clickPrevSlideTestimonial();
+		delay(3);
 		extentTest.log(LogStatus.PASS, "Show Testimonial");
 	}
 	

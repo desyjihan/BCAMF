@@ -167,6 +167,9 @@ public class Home {
 	@FindBy(xpath = "//*[@id=\"post-1397\"]/div[5]/div/div/div/h2/span")
 	private WebElement Achieve;
 	
+	@FindBy(xpath = "//*[@id=\"post-1397\"]/div[6]/div/div/h2/span")
+	private WebElement News;
+	
 	@FindBy(xpath = "//*[@id=\"post-1397\"]/div[6]/div/div/div[2]/div/div[3]")
 	private WebElement nextSlideNews;
 	
@@ -361,6 +364,10 @@ public class Home {
 		Achieve.isDisplayed();
 	}
 	
+	public void News() {
+		News.isDisplayed();
+	}
+	
 	public void clickNextSlideNews() {
 		nextSlideNews.click();
 	}
@@ -382,11 +389,16 @@ public class Home {
 	}
 	
 	public void closeAds() {
-		closeAds.click();
+//		closeAds.click();
+		WebElement ads = closeAds;;
+		((JavascriptExecutor)driver).executeScript("arguments[0].style.visibility='hidden'", ads);
 	}
 	
 	public void closeAds2() {
-		closeAds2.click();
+//		closeAds2.click();
+		WebElement locatornyaAds = closeAds;
+		WebElement ads = locatornyaAds;
+		((JavascriptExecutor)driver).executeScript("arguments[0].style.visibility='hidden'", ads);
 	}
 	
 }
